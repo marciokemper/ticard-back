@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Control.Start</name>
+    </assembly>
+    <members>
+        <member name="T:Control.Facilites.Controllers.ArquivoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.UpdateSituacao(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="arquivoColetadoId"></param>
+            <param name="situacao"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.UpdateByIdsSituacao(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <param name="situacao"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.UpdateDadosPedido(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="arquivoColetadoId"></param>
+            <param name="numero"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Get(Control.Facilites.AppServices.Dtos.DocumentoFilterDto)">
+            <summary>
+            Pesquisa os arquivos coletados
+            </summary>
+            <param name="filter">Campos para filtrar</param>
+            <returns>Coleção de Arquivos coletados</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Get(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="LoggedclienteId"></param>
+            <param name="centrosCusto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetValorTipoMes(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="LoggedclienteId"></param>
+            <param name="centrosCusto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetNotificacoes(System.Nullable{System.Int32},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="LoggedclienteId"></param>
+            <param name="centrosCusto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetUltimosArquivoColetado(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="LoggedclienteId"></param>
+            <param name="centrosCusto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetValorPorMes(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="LoggedclienteId"></param>
+            <param name="LoggedEmpresaId"></param>
+            <param name="typeInvoice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Get(System.Int32)">
+            <summary>
+            Pesquisa um arquivo coletado de acordo com o parametro
+            </summary>
+            <param name="id">Chave do arquivo coletado</param>
+            <returns>Arquivo Coletado</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Post(Control.Facilites.Domain.Entities.Documento)">
+            <summary>
+            Adiciona o arquivo coletado 
+            </summary>
+            <param name="model">Arquivo coletado a ser inserido</param>
+            <returns>Arquivo coletado com o Id gerado</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Put(System.Int32,Control.Facilites.Domain.Entities.Documento)">
+            <summary>
+            Artera o arquivo coletado
+            </summary>
+            <param name="id">Id arquivo coletado a ser alterado</param>
+            <param name="model">Novos dados do arquivo coletado</param>
+            <returns>Arquivo coletado alterado</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.Delete(System.Int32)">
+            <summary>
+            Remove o arquivo coletado
+            </summary>
+            <param name="id">Id do arquivo coletado a ser removido</param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetFilesSince(System.Nullable{System.Int32},System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="clienteId"></param>
+            <param name="startDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.ValidarItemIncluido(System.Int32,System.String,System.Decimal)">
+            <summary>
+            
+            </summary>
+            <param name="fornecedorclienteid"></param>
+            <param name="dtVencimento"></param>
+            <param name="total"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.ValidarItemIncluidoManual(System.Int32,System.Int32,System.String,System.Decimal)">
+            <summary>
+            
+            </summary>
+            <param name="clienteId"></param>
+            <param name="fornecedorId"></param>
+            <param name="dtVencimento"></param>
+            <param name="total"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.get_invoices(System.String,System.String,System.String,System.String)">
+            <summary>
+            Retorna uma coleção de documentos de acordo com os parametros informados
+            </summary>
+            <param name="datade">Data Inicial de Vencimento</param>
+            <param name="dataate">Data Final de Vencimento</param>
+            <param name="emissor">Nome do Emissor. (ex.: COPEL)</param>
+            <param name="cnpj">CPNJ do Cliente</param>
+            <returns></returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ArquivoController.GetCalendario(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="loggedclienteId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Control.Facilites.Controllers.AuthController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Control.Facilites.Controllers.ConfiguracaoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ConfiguracaoController.#ctor(Control.Facilites.AppServices.Interfaces.IConfiguracaoAppService,Control.Facilites.Validators.ConfiguracaoValidator)">
+            <summary>
+            
+            </summary>
+            <param name="appService"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ConfiguracaoController.Get">
+            <summary>
+            Pesquisa Configurações
+            </summary>
+            <returns>Configuração</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ConfiguracaoController.Incluir(Control.Facilites.Domain.Entities.Configuracao)">
+            <summary>
+            Incluir Configurações
+            </summary>
+            <param name="model">dados das configurações</param>
+            <returns>Configuração incluída</returns>
+        </member>
+        <member name="M:Control.Facilites.Controllers.ConfiguracaoController.Put(System.Int32,Control.Facilites.Domain.Entities.Configuracao)">
+            <summary>
+            Alterar Configuração
+            </summary>
+            <param name="id">Codigo da configuração a ser alterada</param>
+            <param name="model">Dados da configuração</param>
+            <returns>Configuração alterada</returns>
+        </member>
+        <member name="T:Control.Facilites.Controllers.EmpresaController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.Controllers.EmpresaController.#ctor(Control.Facilites.AppServices.Interfaces.IEmpresaAppService,Control.Facilites.Validators.EmpresaValidator)">
+            <summary>
+            
+            </summary>
+            <param name="appService"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="T:Control.Facilites.Controllers.EmpresaFornecedorController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.Controllers.EmpresaFornecedorController.#ctor(Control.Facilites.AppServices.Interfaces.IEmpresaFornecedorAppService,Control.Facilites.Validators.EmpresaFornecedorValidator)">
+            <summary>
+            
+            </summary>
+            <param name="appService"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="T:Control.Facilites.Controllers.FornecedorController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.Controllers.FornecedorController.#ctor(Control.Facilites.AppServices.Interfaces.IFornecedorAppService,Control.Facilites.Validators.FornecedorValidator)">
+            <summary>
+            
+            </summary>
+            <param name="appService"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="M:Control.Facilites.Controllers.FornecedorController.UploadFile">
+            <summary>
+            Faz o upload de arquivo coletao
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Control.Facilites.FileCallbackResult">
+            <summary>
+            Represents an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> that when executed will
+            execute a callback to write the file content out as a stream.
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.FileCallbackResult.#ctor(System.String,System.Func{System.IO.Stream,Microsoft.AspNetCore.Mvc.ActionContext,System.Threading.Tasks.Task})">
+            <summary>
+            Creates a new <see cref="T:Control.Facilites.FileCallbackResult"/> instance.
+            </summary>
+            <param name="contentType">The Content-Type header of the response.</param>
+            <param name="callback">The stream with the file.</param>
+        </member>
+        <member name="M:Control.Facilites.FileCallbackResult.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Func{System.IO.Stream,Microsoft.AspNetCore.Mvc.ActionContext,System.Threading.Tasks.Task})">
+            <summary>
+            Creates a new <see cref="T:Control.Facilites.FileCallbackResult"/> instance.
+            </summary>
+            <param name="contentType">The Content-Type header of the response.</param>
+            <param name="callback">The stream with the file.</param>
+        </member>
+        <member name="P:Control.Facilites.FileCallbackResult.Callback">
+            <summary>
+            Gets or sets the callback responsible for writing the file content to the output stream.
+            </summary>
+        </member>
+        <member name="T:Control.Facilites.WriteOnlyStreamWrapper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Control.Facilites.WriteOnlyStreamWrapper.#ctor(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Control.Facilites.WriteOnlyStreamWrapper.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:Control.Facilites.WriteOnlyStreamWrapper.WriteByte(System.Byte)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Control.Facilites.WriteOnlyStreamWrapper.CanTimeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Control.Facilites.WriteOnlyStreamWrapper.ReadTimeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Control.Facilites.WriteOnlyStreamWrapper.WriteTimeout">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

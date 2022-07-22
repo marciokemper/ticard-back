@@ -1,0 +1,133 @@
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>  
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box" style="padding:23px 0px;">
+          <div class="btn-group pull-right">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="this.isAdmin" class="row">
+      <div class="col-lg-12">
+        <div class="card-box" >
+          <h4 class="header-title m-t-0 m-b-30">Arquivos</h4>
+
+          <div class="table-responsive" style="min-height: 270px">
+            <table class="table table table-hover m-0">
+              <thead>
+                <tr>
+                  <th style="width:25%;" class="text-left">Fornecedor</th>
+                  <th style="width:30%;" class="text-left">Cliente</th>
+                  <th style="width:10%;" class="text-left">Cnpj</th>
+                  <th style="width:10%;" class="text-center">Data Inclusão</th>
+                  <th style="width:15%;" class="text-left">Status</th>
+                  <th style="width:10%;" class="text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="documentos?.length != 0">
+                <tr *ngFor="let dc of documentos">
+                  <td class="text-left">{{dc.empresaFornecedor.fornecedor.nome}}</td>
+                  <td class="text-left">{{dc.empresaFornecedor.empresa.nome}}</td>
+                  <td class="text-left">{{dc.empresaFornecedor.empresa.cnpj}}</td>
+                  <td class="text-center">{{ dc.dataInclusao | date: 'dd/MM/yyyy' }}</td>
+                  <td *ngIf="dc.situacaoDocumento==1" class="text-left">Aguardando Aprovação</td>
+                  <td *ngIf="dc.situacaoDocumento==2" lass="text-left">Aprovado</td>
+                  <td *ngIf="dc.situacaoDocumento==3" lass="text-left">Rejeitado</td>
+                  <td class="text-center" nowrap>
+                    <a *ngIf="dc.situacaoDocumento==1" title="Aprovar" href="javascript: void(0);" (click)="aprovar(dc)" data-toggle="modal" data-animation="fall" data-plugin="frmAprovar" data-overlaySpeed="200" data-target="#frmAprovar" class="table-action-btn h3"><i class="mdi mdi-cash-usd text-success"></i></a>
+                    <a *ngIf="dc.situacaoDocumento==1" title="Rejeitar" href="javascript: void(0);" (click)="rejeitar(dc)" data-toggle="modal" data-animation="fall" data-plugin="frmRejeitar" data-overlaySpeed="200" data-target="#frmRejeitar" class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+                    <a *ngIf="dc.situacaoDocumento==1" title="Visualizar Documento" href="javascript: void(0);" (click)="viewPdf(dc.caminhoAnexo)" class="table-action-btn h3"><i class="mdi mdi-file-document text-primary"></i></a>
+
+                  </td>
+
+                  <!--
+  <td *ngIf="dc.situacaoOrcamento==4" lass="text-left">Validada</td>
+  <td *ngIf="isAdmin==true && nf.situacaoOrcamento!=3" class="text-left" nowrap>
+    <a title="Validar" href="javascript: void(0);" (click)="validar(nf)" data-toggle="modal" data-animation="fall" data-plugin="frmValidar" data-overlaySpeed="200" data-target="#frmValidar" class="table-action-btn h3"><i class="mdi mdi-checkbox-marked-outline text-success"></i></a>
+    <a title="Enviar JVL" href="javascript: void(0);" (click)="aprovar(nf)" data-toggle="modal" data-animation="fall" data-plugin="frmAprovar" data-overlaySpeed="200" data-target="#frmAprovar" class="table-action-btn h3"><i class="mdi mdi-cash-usd text-success"></i></a>
+    <a title="Rejeitar" href="javascript: void(0);" (click)="rejeitar(nf)" data-toggle="modal" data-animation="fall" data-plugin="frmRejeitar" data-overlaySpeed="200" data-target="#frmRejeitar" class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+    <a title="Visualizar Nota Fiscal" href="javascript: void(0);" (click)="viewPdf(nf.caminhoAnexo)" class="table-action-btn h3"><i class="mdi mdi-file-document text-primary"></i></a>
+    <a tooltip="{{nf.obsFornecedor}}" class="table-action-btn h3" placement="left"><i class="mdi mdi-message-reply-text text-orange"></i></a>
+  </td>
+  <td *ngIf="isAdmin==true && nf.situacaoOrcamento==3" class="text-left" nowrap>
+    <a title="Reenviar o Email" href="javascript: void(0);" (click)="reenviaremail(nf)" class="table-action-btn h3"><i class="mdi mdi-account-circle text-success"></i></a>
+    <a title="Rejeitar" href="javascript: void(0);" (click)="rejeitar(nf)" data-toggle="modal" data-animation="fall" data-plugin="frmRejeitar" data-overlaySpeed="200" data-target="#frmRejeitar" class="table-action-btn h3"><i class="mdi mdi-check-circle-outline text-danger"></i></a>
+    <a title="Visualizar Nota Fiscal" href="javascript: void(0);" (click)="viewPdf(nf.caminhoAnexo)" class="table-action-btn h3"><i class="mdi mdi-checkbox-blank-circle text-primary"></i></a>
+    <a tooltip="{{nf.obsFornecedor}}" class="table-action-btn h3" placement="left"><i class="mdi mdi-alert-circle-outline text-orange"></i></a>
+  </td>
+  <td *ngIf="isAdmin!=true" class="text-left" nowrap>
+    <a title="Editar" [routerLink]="['/notafiscal',  nf.id]" class="table-action-btn h3"><i class="mdi mdi-arrow-right-bold-circle text-success"></i></a>
+    <a tooltip="{{nf.obsAdmin}}" class="table-action-btn h3" placement="left"><i class="mdi mdi-alert-circle-outline text-orange"></i></a>
+  </td>-->
+
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="frmAprovar" *ngIf="currentDocto!=null" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;" data-parsley-validate="">
+      <div class="modal-dialog" style="width:40%;">
+        <div class="modal-content">
+          <form name="formAprovar" id="formAprovar" #form="ngForm" (ngSubmit)="$event.stopPropagation()" data-parsley-validate="">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">APROVAR DOCUMENTO</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="obsAdmin" class="control-label">Observação</label>
+                    <textarea name="obsAdmin" class="form-control" [(ngModel)]="currentDocto.obsAdmin" rows="5" parsley-trigger="change" id="obsAdmin"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                <button type="button" (click)="updateaprovar()" class="btn btn-custom waves-effect waves-light">Aprovar <i class="mdi mdi-content-save"></i></button>
+                <button type="button" (click)="exitpopup()" class="btn btn-orange waves-effect waves-light" data-dismiss="modal">Sair <i class="mdi mdi-exit-to-app"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="frmRejeitar" *ngIf="currentDocto!=null" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;" data-parsley-validate="">
+      <div class="modal-dialog" style="width:40%;">
+        <div class="modal-content">
+          <form name="formRejeitar" id="formRejeitar" #form="ngForm" (ngSubmit)="$event.stopPropagation()" data-parsley-validate="">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">REJEITAR DOCUMENTO</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="obsFornecedor" class="control-label">Observação</label>
+                    <textarea name="obsFornecedor" class="form-control" [(ngModel)]="currentDocto.obsAdmin" rows="5" parsley-trigger="change" id="obsFornecedor"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                <button type="button" (click)="updaterejeitar()" class="btn btn-custom waves-effect waves-light">Rejeitar <i class="mdi mdi-content-save"></i></button>
+                <button type="button" (click)="exitpopup()" class="btn btn-orange waves-effect waves-light" data-dismiss="modal">Sair <i class="mdi mdi-exit-to-app"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+

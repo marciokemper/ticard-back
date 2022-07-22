@@ -1,0 +1,66 @@
+
+
+  <div class="table-grid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="btn-group pull-right">
+            <ol class="breadcrumb hide-phone p-0 m-0">
+              <li>
+                <a [routerLink]="['/dashboard']">Principal</a>
+              </li>
+              <li class="active">
+                Adquirentes
+              </li>
+            </ol>
+          </div>
+          <h4 class="page-title">LISTA DE ADQUIRENTES</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-box table-responsive">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="m-b-30">
+                <button (click)="create()" class="btn btn-orange waves-effect waves-light" [routerLink]="['/fornecedor',  -1]">Adicionar <i class="mdi mdi-check-circle-outline"></i></button>
+                <!--<button class="btn btn-success waves-effect waves-light">Importar CSV <i class=" mdi mdi-export"></i></button>-->
+              </div>
+            </div>
+          </div>
+          <table id="grdListaFornecedor" datatable [dtOptions]="dtOptions" class="table table-colored table-primary table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="background-color: #A2ADAF;" class="text-center">ID</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Codigo</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Nome</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Cnpj</th>
+                <th style="background-color: #A2ADAF;" class="text-center">AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="fornecedores?.length != 0">
+              <tr *ngFor="let fornecedor of fornecedores">
+                <td class="text-right">{{ fornecedor.id }}</td>
+                <td>{{ fornecedor.codigo | uppercase}}</td>
+                <td>{{ fornecedor.nome | uppercase}}</td>
+                <td>{{ fornecedor.cnpj }}</td>
+                <td class="text-center" nowrap>
+                  <a title="Editar" [routerLink]="['/fornecedor',  fornecedor.id]" class="table-action-btn h3"><i class="mdi mdi-pencil-box-outline text-success"></i></a>
+                  <a title="Excluir" href="javascript: void(0);" (click)="remove(fornecedor.id); $event.stopPropagation()" class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="fornecedores?.length == 0">
+              <tr>
+                <td colspan="8" class="no-data-available">Nenhum Adiquirente encontrado!</td>
+              </tr>
+            <tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

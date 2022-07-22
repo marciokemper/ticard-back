@@ -1,0 +1,108 @@
+<div class="table-grid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+
+        <h4 class="page-title">LISTA DE FILIAIS</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="m-b-30">
+              <button title="Adicionar Filial" (click)="create()" class="btn btn-orange waves-effect waves-light" data-toggle="modal" data-target="#frmVinculaFornecedor">ADICIONAR <i class="mdi mdi-check-circle-outline"></i></button>
+              <button class="btn btn-custom waves-effect waves-light" [routerLink]="['/empresa']">Voltar <i class="mdi mdi-check-circle-outline"></i></button>
+
+            </div>
+          </div>
+        </div>
+        <table id="grdListaVincula" datatable [dtOptions]="dtOptions" class="table table-colored table-primary table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="background-color: #A2ADAF;" class="text-center">ID</th>
+              <th style="background-color: #A2ADAF;" class="text-center">Nome</th>
+              <th style="background-color: #A2ADAF;" class="text-center">Cnpj</th>
+              <th style="background-color: #A2ADAF;" class="text-center">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="vinculacoes?.length != 0">
+            <tr *ngFor="let empresa of vinculacoes">
+              <td class="text-right">{{ empresa.id }}</td>
+              <td>{{ empresa.nome | uppercase}}</td>
+              <td>{{ empresa.cnpj}}</td>
+              <td class="text-center" nowrap>
+                <a title="Editar" [routerLink]="['/empresa',  empresa.id]" class="table-action-btn h3"><i class="mdi mdi-pencil-box-outline text-success"></i></a>
+                <a title="Excluir" href="javascript: void(0);" (click)="remove(empresa.id); $event.stopPropagation()" class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+                <a title="Vincular Adiquirentes" [routerLink]="['/empresafornecedores',  empresa.id]" class="table-action-btn h3"><i class=" mdi mdi-rename-box text-primary"></i></a>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="vinculacoes?.length == 0">
+            <tr>
+              <td colspan="4" class="no-data-available">Nenhuma filial encontrada!</td>
+            </tr>
+          <tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="frmVinculaFornecedor" (onClose)="select.clear()" *ngIf="currentVinculacao!=null" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;" data-parsley-validate="">
+  <div class="modal-dialog" style="width:55%;">
+    <div class="modal-content">
+      <form name="formVincula" id="formVincula" #form="ngForm" (ngSubmit)="save();$event.stopPropagation()" data-parsley-validate="">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 [class.hidden]="inEditMode" class="modal-title">EDITAR FILIAL</h4>
+          <h4 [class.hidden]="!inEditMode" class="modal-title">ADICIONAR FILIAL</h4>
+        </div>
+        <br />
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="nome" class="control-label"><font color="red">Nome</font></label>
+                <input autocomplete="off" name="nome" type="text" [(ngModel)]="currentVinculacao.nome" parsley-trigger="change" required class="form-control" id="nome" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="cnpj" class="control-label"><font color="red">Cnpj</font></label>
+                <input autocomplete="off" name="cnpj" type="text" [(ngModel)]="currentVinculacao.cnpj" parsley-trigger="change" required class="form-control" id="cnpj" placeholder="">
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="pontoVenda" class="control-label"><font color="red">Ponto de Venda</font></label>
+                <input autocomplete="off" name="pontoVenda" type="text" [(ngModel)]="currentVinculacao.pontoVenda" parsley-trigger="change" required class="form-control" id="pontoVenda" placeholder="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group">
+            <button type="submit" class="btn btn-custom waves-effect waves-light">Salvar <i class="mdi mdi-content-save"></i></button>
+            <button type="button" (click)="exitpopup()" class="btn btn-orange waves-effect waves-light" data-dismiss="modal">Sair <i class="mdi mdi-exit-to-app"></i></button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<div class="navbar-custom">
+  <div class="container">
+    <div id="navigation">
+      <div class="row">
+        <div class="col-xs-10 text-left">
+          <ul class="navigation-menu">
+            <li *ngIf="this.isAdmin" class="has-submenu">
+              <a [routerLink]='["/"]'><i class="mdi mdi-home"></i> Painel de Controle</a>
+            </li>
+            <li *ngIf="!this.isAdmin" class="has-menu">
+              <a [routerLink]='["/arquivo"]'>Adicionar Arquivos</a>
+            </li>
+            <li *ngIf="this.isAdmin" class="has-submenu">
+              <a><i class="mdi mdi-blur-linear"></i> Cadastros</a>
+              <ul class="submenu">
+                <li *ngIf="this.isAdmin" class="has-menu">
+                  <a [routerLink]='["/empresa"]'><i class="ion-android-social-user"></i> Empresas</a>
+                </li>
+                <li *ngIf="this.isAdmin" class="has-menu">
+                  <a [routerLink]='["/fornecedor"]'><i class="mdi mdi-shuffle-disabled"></i> Adquirentes</a>
+                </li>
+                <li *ngIf="this.isAdmin" class="has-menu">
+                  <a [routerLink]='["/usuario"]'><i class="ion-android-social-user"></i> Usuários</a>
+                </li>
+
+              </ul>
+            </li>
+            <li *ngIf="this.isAdmin" class="has-submenu">
+              <a><i class="mdi mdi-settings"></i> Administração</a>
+              <ul class="submenu">
+                <li class="has-menu">
+                  <a [routerLink]='["/configuracao"]'><i class="mdi mdi-settings"></i> Configurações</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

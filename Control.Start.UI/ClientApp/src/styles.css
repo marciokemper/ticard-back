@@ -1,0 +1,38 @@
+
+@import "assets/css/bootstrap.min.css";
+@import "assets/css/core.css";
+@import "assets/css/components.css";
+@import "assets/css/icons.css";
+@import "assets/css/pages.css";
+@import "assets/css/menu.css";
+@import "assets/css/responsive.css";
+@import "assets/plugins/switchery/switchery.min.css";
+@import "assets/plugins/morris/morris.css";
+
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+
+
+ng-select > div {
+  height: 38px;
+}
+
+ng-select > div > div.single > div.toggle {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.table-grid {
+  font-family: 'Roboto', 'Segoe UI', 'GeezaPro', 'DejaVu Serif', 'sans-serif', '-apple-system', 'BlinkMacSystemFont';
+  font-size: 12px;
+  font-weight: normal;
+}

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Control Start</title>
+  <style>
+    .saving {
+      text-align: center;
+      position: absolute;
+      font-size: 35px;
+      width: 250px;
+      height: 70px;
+      line-height: 50px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: helvetica, arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+    }
+
+      .saving span {
+        font-size: 50px;
+        animation-name: blink;
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+
+        .saving span:nth-child(2) {
+          animation-delay: .2s;
+        }
+
+        .saving span:nth-child(3) {
+          animation-delay: .4s;
+        }
+
+    @keyframes blink {
+      0% {
+        opacity: .2;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .2;
+      }
+    }
+  </style>
+  <link href="//cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+  <script src='fullcalendar/core/locales/pt.js'></script>
+  <base href="/">
+  <!--Start of Tawk.to Script-->
+  <!--<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5d55a721eb1a6b0be607b7c7/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>-->
+  <!--End of Tawk.to Script-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+  <!--<app-root>
+    <div>
+      <p class="saving">Carregando...<span>.</span><span>.</span><span>.</span></p>
+    </div>
+  </app-root>-->
+  <app-root>
+    <style>
+      app-root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+        text-transform: uppercase;
+        font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans, Ubuntu, Cantarell, Helvetica, sans-serif;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      }
+
+      body {
+        background: #f3f3f3;
+        margin: 0;
+        padding: 0;
+      }
+
+      @keyframes dots {
+        50% {
+          transform: translateY(-.4rem);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .d {
+        animation: dots 1.5s ease-out infinite;
+      }
+
+      .d-2 {
+        animation-delay: .5s;
+      }
+
+      .d-3 {
+        animation-delay: 1s;
+      }
+    </style>
+
+    Carregando<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>
+  </app-root>
+
+</body>
+
+</html>

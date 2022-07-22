@@ -1,0 +1,78 @@
+
+
+  <div class="table-grid">
+
+    <!-- Page-Title -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="btn-group pull-right">
+            <ol class="breadcrumb hide-phone p-0 m-0">
+              <li>
+                <a [routerLink]="['/dashboard']">Principal</a>
+              </li>
+              <li class="active">
+                Cliente
+              </li>
+            </ol>
+          </div>
+          <h4 class="page-title">LISTA DE USUÁRIOS</h4>
+        </div>
+      </div>
+    </div>
+    <!-- end page title end breadcrumb -->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-box table-responsive">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="m-b-30">
+                <button (click)="create()" class="btn btn-orange waves-effect waves-light" [routerLink]="['/usuario',  -1]">Adicionar <i class="mdi mdi-check-circle-outline"></i></button>
+              </div>
+            </div>
+          </div>
+          <table id="grdListaUsuario" datatable [dtOptions]="dtOptions" class="table table-colored table-primary table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="background-color: #A2ADAF;" class="text-center">ID</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Nome</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Empresa</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Adquirente</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Login</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Senha</th>
+                <th style="background-color: #A2ADAF;" class="text-center">AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="usuarios?.length != 0">
+              <tr *ngFor="let usuario of usuarios">
+                <td class="text-right">{{ usuario.id }}</td>
+                <td>{{ usuario.nome | uppercase}}</td>
+                <td *ngIf="usuario.empresaFornecedor!==null">{{usuario.empresaFornecedor.empresa.nome}}</td>
+                <td *ngIf="usuario.empresaFornecedor===null"></td>
+                <td *ngIf="usuario.empresaFornecedor!==null">{{usuario.empresaFornecedor.fornecedor.nome}}</td>
+                <td *ngIf="usuario.empresaFornecedor===null"></td>
+
+                <td *ngIf="usuario.empresaFornecedor===null"></td>
+                <td *ngIf="usuario.empresaFornecedor!==null">{{usuario.login}}</td>
+                <td *ngIf="usuario.empresaFornecedor===null"></td>
+                <td *ngIf="usuario.empresaFornecedor!==null">{{usuario.senha}}</td>
+
+                <td class="text-center" nowrap>
+                  <a title="Editar" [routerLink]="['/usuario',  usuario.id]" class="table-action-btn h3"><i class="mdi mdi-pencil-box-outline text-success"></i></a>
+                  <a title="Excluir" href="javascript: void(0);" (click)="remove(usuario.id);$event.stopPropagation()" class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+
+
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="usuarios?.length == 0">
+              <tr>
+                <td colspan="5" class="no-data-available">Nenhum usuário encontrado!</td>
+              </tr>
+            <tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

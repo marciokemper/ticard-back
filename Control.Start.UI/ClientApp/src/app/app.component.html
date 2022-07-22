@@ -1,0 +1,54 @@
+<!-- Navigation Bar-->
+<header *ngIf="authService.isAuthenticated()" id="topnav">
+
+  <div class="topbar-main">
+    <div class="container">
+      <!-- Logo container-->
+      <div class="logo">
+        <!-- Text Logo -->
+        <!--<a href="index.html" class="logo">-->
+        <!--Zircos-->
+        <!--</a>-->
+        <!-- Image Logo -->
+        <a routerLink="" class="logo">
+          <img src="assets/images/logo.png" alt="" height="40">
+        </a>
+      </div>
+      <!-- End Logo container-->
+      <app-menu-extras></app-menu-extras>
+      <!-- end menu-extras -->
+    </div> <!-- end container -->
+  </div>
+  <!-- end topbar-main -->
+  <app-nav-menu></app-nav-menu>
+
+</header>
+<!-- End Navigation Bar-->
+<div class="wrapper">
+  <div class="container">
+    <router-outlet></router-outlet>
+
+    <!-- end row -->
+    <!-- Footer -->
+    <footer *ngIf="authService.isAuthenticated()" class="footer text-right">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-1 text-left">
+          </div>
+          <div class="col-xs-11" class="rodape" style="display: flex; flex-direction: column;">
+            <span class="copyright" style="text-align: center;">TI-CARD START Copyright 2020 ©. Todos os direitos
+              reservados.</span>
+            <span class="lgpd" style="font-size: 13px; text-align: center;"> A TI-CARD start preocupada com a privacidade e o
+              uso correto e exclusivo dos dados coletados,
+              garante que
+              estas
+              informações serão tratadas exclusivamente para o processamento de extratos.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+  </div>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

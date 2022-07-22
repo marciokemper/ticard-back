@@ -1,0 +1,120 @@
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-title-box">
+      <div class="btn-group pull-right">
+        <ol class="breadcrumb hide-phone p-0 m-0">
+          <li>
+            <a [routerLink]="['/dashboard']">Principal</a>
+          </li>
+          <li class="active">
+            Gráficos
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row card-box">
+  <h4 class="header-title m-t-0 m-b-30">Notas do mês de {{mesCorrente}}</h4>
+  <div class="col-lg-3 col-md-6">
+    <div class="card-box tilebox-two tilebox-success">
+      <i class="mdi mdi-calendar-clock pull-right text-success"></i>
+      <h6 class="text-success text-uppercase m-b-15 m-t-10">Total</h6>
+      <h2 class="m-b-10"><span data-plugin="counterup">{{qtddocumento}}</span></h2>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="card-box tilebox-two tilebox-primary">
+      <i class="mdi mdi-share pull-right text-primary"></i>
+      <h6 class="text-primary text-uppercase m-b-15 m-t-10">NF Serviço enviadas à JVL</h6>
+      <h2 class="m-b-10"><span data-plugin="counterup">{{qtNfServicoAprovadas}}</span></h2>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="card-box tilebox-two tilebox-warning">
+      <i class="mdi mdi-checkbox-marked-outline pull-right text-warning"></i>
+      <h6 class="text-warning text-uppercase m-b-15 m-t-10">NF Produto Aprovadas</h6>
+      <h2 class="m-b-10"><span data-plugin="counterup">{{qtNfProdutoAprovadas}}</span></h2>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="card-box tilebox-two tilebox-info">
+      <i class="mdi mdi-currency-usd pull-right text-info"></i>
+      <h6 class="text-info text-uppercase m-b-15 m-t-10">Valor Total</h6>
+      <h2 class="m-b-10">R$ <span data-plugin="counterup">{{vlrmes}}</span></h2>
+
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title m-t-0">Valores por Mês Produto</h4>
+      <div id="chartValorMesProduto" style="height: 307px;"></div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title m-t-0">Valores por Mês Serviço</h4>
+      <div id="chartValorMesServico" style="height: 307px;"></div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card-box">
+      <h4 class="header-title m-t-0 m-b-30">Últimas notas</h4>
+
+      <div class="table-responsive" style="min-height: 270px">
+        <table class="table table table-hover m-0">
+          <thead>
+            <tr>
+              <th class="text-center"></th>
+              <th>Emissor</th>
+              <th>Unidade de Negócio</th>
+              <th>Vencimento</th>
+              <th>Dt. Inclusão</th>
+              <th class="text-right">Valor</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="ultimosColetados?.length != 0">
+            <tr *ngFor="let arquivo of ultimosColetados">
+              <!-- <th class="text-center"><img width="30" src="assets/images/a{{arquivo.Situacao}}.png"
+                  title="{{arquivo.titleSituacao}}"></th> -->
+              <th>{{arquivo.titleSituacao}}</th>
+              <th>
+                <h5 class="m-0">{{arquivo.FornecedorNome | uppercase}}</h5>
+                <p class="m-0 text-muted font-13"><small>{{arquivo.TipoFornecedorNome | uppercase}}</small></p>
+              </th>
+              <td>{{arquivo.ClienteNome | uppercase}}</td>
+              <td>{{arquivo.DtVencimento}}</td>
+              <td>{{arquivo.DtInclusao}}</td>
+              <td class="text-right">{{arquivo.Total}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="header-title m-t-0">Valor por Tipo</h4>
+      <div class="chart" style="height: 400px;" id="3d-exploded-chart"></div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card-box">
+      <h4 class="header-title m-t-0">Valor por Tipo x Mês</h4>
+      <div class="chart" id="column-stacked-chart" style="height: 400px;"></div>
+    </div>
+  </div>
+</div>

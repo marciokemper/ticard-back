@@ -1,0 +1,172 @@
+Timeout 5400
+ProxyTimeout 5400
+
+<VirtualHost api.contas.controlnex.com.br:443>
+        ServerName api.contas.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+
+    ProxyRequests Off
+        ProxyPreserveHost On
+
+        <Proxy *>
+                Order deny,allow
+                Allow from all
+        </Proxy>
+
+        ProxyPass / http://localhost:5000/ 
+        ProxyPassReverse / http://localhost:5000/ 
+
+        ErrorLog /home/control/apachelogs/error.log
+  
+ProxyPreserveHost On
+        SSLProxyEngine On
+        ProxyTimeout 1200
+        ProxyBadHeader Ignore
+        ProxyRequests off
+        ProxyVia Off
+
+       
+        SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+
+
+</VirtualHost>
+
+<VirtualHost frotas.controlnex.com.br:80>
+        ServerName frotas.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+        Redirect / https://frotas.controlnex.com.br
+</VirtualHost>
+
+
+<VirtualHost contas.controlnex.com.br:80>
+    ServerName contas.controlnex.com.br
+    ServerAdmin felipe@controlnex.com.br
+    Redirect / https://contas.controlnex.com.br
+</VirtualHost>
+
+<VirtualHost sefaz.controlnex.com.br:80>
+        ServerName sefaz.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+     ProxyPass / http://localhost:8002/
+     ProxyPassReverse / http://localhost:8002/
+</VirtualHost>
+
+<VirtualHost api.contas.controlnex.com.br:80>
+    ServerName api.contas.controlnex.com.br
+    ServerAdmin felipe@controlnex.com.br
+    Redirect / https://api.contas.controlnex.com.br
+</VirtualHost>
+
+<VirtualHost api.frotas.controlnex.com.br:443>
+        ServerName api.frotas.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+        ProxyPass / http://localhost:5001/
+        ProxyPassReverse / http://localhost:5001/
+
+
+
+        SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+        Header always set Strict-Transport-Security "max-age=15768000" 
+        RequestHeader append "X-Forwarded-Proto" "https"
+        RequestHeader set "X-Forwarded-Ssl" "on"
+</VirtualHost>
+
+
+<VirtualHost frotas.controlnex.com.br:443>
+        ServerName frotas.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+        ProxyPass / http://localhost:8001/
+        ProxyPassReverse / http://localhost:8001/
+       
+        SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+        Header always set Strict-Transport-Security "max-age=15768000" 
+        RequestHeader append "X-Forwarded-Proto" "https"
+        RequestHeader set "X-Forwarded-Ssl" "on"
+</VirtualHost>
+
+
+<VirtualHost contas.controlnex.com.br:443>
+        ServerName contas.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+        ProxyPass / http://localhost:8000/
+        ProxyPassReverse / http://localhost:8000/
+ 
+        
+        SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+        Header always set Strict-Transport-Security "max-age=15768000" 
+        RequestHeader append "X-Forwarded-Proto" "https"
+        RequestHeader set "X-Forwarded-Ssl" "on"
+</VirtualHost>
+
+<VirtualHost apis.controlnex.com.br:443>
+        ServerName apis.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+        ProxyPass /frotas http://localhost:5001/
+        ProxyPassReverse /frotas http://localhost:5001/
+        ProxyPass /contas http://localhost:5000/
+        ProxyPassReverse /contas http://localhost:5000/ 
+       
+        SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+        Header always set Strict-Transport-Security "max-age=15768000" 
+        RequestHeader append "X-Forwarded-Proto" "https"
+        RequestHeader set "X-Forwarded-Ssl" "on"
+</VirtualHost>
+
+
+<VirtualHost solucoes.controlnex.com.br:443>
+        ServerName solucoes.controlnex.com.br
+        ServerAdmin felipe@controlnex.com.br
+
+        ProxyPass / http://localhost
+        ProxyPassReverse / http://localhost:80/
+
+         SSLEngine On
+        SSLCertificateFile /etc/letsencrypt/live/contas.controlnex.com.br/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/contas.controlnex.com.br/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/contas.controlnex.com.br/chain.pem
+        Header always set Strict-Transport-Security "max-age=15768000" 
+        RequestHeader append "X-Forwarded-Proto" "https"
+        RequestHeader set "X-Forwarded-Ssl" "on"
+</VirtualHost>
+
+
+SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
+SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
+SSLHonorCipherOrder on
+SSLCompression off
+SSLSessionTickets off
+
+SSLUseStapling on
+SSLStaplingResponderTimeout 5
+SSLStaplingReturnResponderErrors off
+SSLStaplingCache shmcb:/var/run/ocsp(128000)
+
+
+Alias "/controlstorage/bosch" "/controlstorage/bosch"
+<Directory "/controlstorage/faturas">
+    Require all granted
+</Directory>
+<Directory "/controlstorage/bosch/0">
+    Options FollowSymLinks
+    Require all granted
+</Directory>

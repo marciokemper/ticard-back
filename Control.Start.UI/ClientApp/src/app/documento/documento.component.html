@@ -1,0 +1,157 @@
+<!--<div class="table-grid">-->
+
+  <!-- Page-Title -->
+  <!--<div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Nota Fiscal
+            </li>
+          </ol>
+        </div>
+        <h4 class="page-title">LISTA DE NOTAS FISCAIS</h4>
+      </div>
+    </div>
+  </div>-->
+  <!-- end page title end breadcrumb -->
+
+  <!--<div class="row">
+    <div class="col-sm-12">
+      <div style="font-size:12px;min-height:550px" class="card-box table-responsive">
+        <div class="row">
+          <div class="col-sm-3">
+            
+              <button title="Adicionar" (click)="create()" class="btn btn-orange waves-effect waves-light"
+                      [routerLink]="['/notafiscal',  -1]">
+                Adicionar <i class="mdi mdi-check-circle-outline"></i>
+              </button>
+           
+              <button *ngIf="isAdm" title="Enviar para Joinville" (click)="enviarJvl()" class="btn btn-success waves-effect waves-light">
+                Enviar para Joinville <i class="mdi mdi-check-circle-outline"></i>
+              </button>
+            
+
+          </div>
+          <div *ngIf="isAdm" class="col-sm-9" style="display: flex;justify-content: flex-end; align-items: center;">
+            <div style="margin-right: 1%;">
+              <label for="tipopessoa" class="control-label">
+                <font color="red">Tipo Relatório</font>
+              </label>
+              <select class="form-control" (change)="selecionarTipoRelatorio($event.target.value)" name="tiporelatorio"
+                      id="tiporelatorio">
+                <option>Selecione o tipo de relatório</option>
+                <option value="1">Nota fiscal produto x valor</option>
+                <option value="2">Nota fiscal serviço x valor</option>
+                <option value="3">Total notas fiscais x valores</option>
+              </select>
+            </div>
+            <div style="margin-right: 1%;">
+              <label>
+                <font color="red">Data Inicial</font>
+              </label>
+              <div>
+                <div class="input-group">
+                  <input type="text" autocomplete="off" class="form-control" placeholder="dd/mm/aaaa" id="dataInicial">
+                  <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                </div>--><!-- input-group -->
+              <!--</div>
+            </div>
+            <div style="margin-right: 1%;">
+              <label>
+                <font color="red">Data Final</font>
+              </label>
+              <div>
+                <div class="input-group">
+                  <input type="text" autocomplete="off" class="form-control" placeholder="dd/mm/aaaa" id="dataFinal">
+                  <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:17px; margin-right: 1%;">
+              <button title=" Gerar Relatório" (click)="createRelatorio()"
+                      class="btn btn-success waves-effect waves-light">
+                Gerar Relatório
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-11">
+            <div class="form-group">
+              <label class="control-label">Palavra</label>
+              <input style="font-size:12px;" name="texto" type="text" [(ngModel)]="filterTexto" parsley-trigger="change"
+                     class="form-control" id="texto" placeholder="Informe uma palava Nome/CNPJ">
+            </div>
+          </div>
+          <div class="col-sm-1">
+            <div class="form-group" style="text-align:right">
+              <label class="control-label">&nbsp;</label>
+              <button title="Pesquisar" (click)="searchGrid(filterTexto);" style="margin-top:20px;padding-top: 10px;"
+                      class="btn btn-success waves-effect waves-light">
+                <i class="ion-ios7-search"></i>
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+        <style>
+          .avatar-sm-box[_ngcontent-c1] {
+            height: 22px;
+            width: 22px;
+            line-height: 22px;
+            font-size: 12px;
+          }
+        </style>
+        <table  id="grdListaCliente" datatable [dtOptions]="dtOptions" class="table table-colored table-primary table-striped table-bordered table-hover">
+
+            <thead>
+              <tr>
+                <th style="background-color: #A2ADAF;" class="text-center"><input id="allchecked" type="checkbox"></th>
+                <th style="background-color: #A2ADAF;" class="text-center">ID</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Fornecedor</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Cliente</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Vencimento</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Valor</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Ativo</th>
+                <th style="background-color: #A2ADAF;" class="text-center">Status</th>
+                <th style="background-color: #A2ADAF;" class="text-center">AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="notas?.length != 0">
+              <tr *ngFor="let nf of notas">
+                <td class="text-center"><input id="{{nf.id}}" type="checkbox"></td>
+                <td class="text-right">{{ nf.id}}</td>
+                <td>{{ nf.fornecedor.nome | uppercase}}</td>
+                <td>{{ nf.clienteNome | uppercase}}</td>
+                <td class="text-center">{{ nf.vencimento | date: 'dd/MM/yyyy' }}</td>
+                <td class="text-right">{{ nf.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</td>
+                <td class="text-center">{{ nf.ativo==1?'SIM':'NÃO' }}</td>
+                <td class="text-center">{{ parseNfStatus(nf.situacaoOrcamento) }}</td>
+                <td class="text-center" nowrap>
+                  <a title="Editar" [routerLink]="['/notafiscal',  nf.id]" class="table-action-btn h3">
+                    <i class="mdi mdi-pencil-box-outline text-success"></i>
+                  </a>
+                  <a title="Excluir" href="javascript: void(0);" (click)="remove(nf.id); $devent.stopPropagation()"
+                     class="table-action-btn h3"><i class="mdi mdi-close-box-outline text-danger"></i></a>
+                  <a title="Visualizar Nota Fiscal" href="javascript: void(0);" (click)="viewPdf(nf.caminhoAnexo)"
+                     class="table-action-btn h3"><i class="mdi mdi-file-pdf-box text-warning"></i></a>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody *ngIf="notas?.length == 0">
+              <tr>
+                <td colspan="8" class="no-data-available">Nenhuma Nota Fiscal encontrada!</td>
+              </tr>
+            <tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>-->

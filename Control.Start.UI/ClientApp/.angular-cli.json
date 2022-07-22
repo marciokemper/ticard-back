@@ -1,0 +1,123 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "Control.Contas.UI"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css",
+        "assets/plugins/responsive-table/css/rwd-table.min.css",
+        "assets/plugins/toastr/toastr.min.css",
+        "assets/plugins/bootstrap-sweetalert/sweet-alert.css",
+        "assets/plugins/tooltipster/tooltipster.bundle.min.css",
+        "assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css",
+        "assets/plugins/multiselect/css/multi-select.css",
+        "assets/plugins/select2/css/select2.min.css",
+        "assets/plugins/bootstrap-select/css/bootstrap-select.min.css",
+        "assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css",
+        "assets/plugins/loadingmodal/css/jquery.loadingModal.css",
+        "assets/plugins/jquery.filer/css/jquery.filer.css",
+        "assets/plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css"
+      ],
+      "scripts": [
+        "assets/js/jquery.min.js",
+        "../node_modules/datatables.net/js/jquery.dataTables.js",
+        "assets/js/modernizr.min.js",
+        "assets/js/loader.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/detect.js",
+        "assets/js/general.js",
+        "assets/js/fastclick.js",
+        "assets/js/jquery.blockUI.js",
+        "assets/js/waves.js",
+        "assets/js/jquery.slimscroll.js",
+        "assets/js/jquery.scrollTo.min.js",
+        "assets/plugins/switchery/switchery.min.js",
+        "assets/plugins/timepicker/bootstrap-timepicker.js",
+        "assets/plugins/waypoints/jquery.waypoints.min.js",
+        "assets/plugins/counterup/jquery.counterup.min.js",
+        "assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js",
+        "assets/plugins/morris/morris.min.js",
+        "assets/plugins/raphael/raphael-min.js",
+        "assets/pages/jquery.dashboard.js",
+        "assets/plugins/parsleyjs/parsley.min.js",
+        "assets/plugins/toastr/toastr.min.js",
+        "assets/plugins/bootstrap-sweetalert/sweet-alert.min.js",
+        "assets/js/jquery.core.js",
+        "assets/js/jquery.app.js",
+        "assets/plugins/tooltipster/tooltipster.bundle.min.js",
+        "assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js",
+        "assets/plugins/multiselect/js/jquery.multi-select.js",
+        "assets/plugins/jquery-quicksearch/jquery.quicksearch.js",
+        "assets/plugins/select2/js/select2.min.js",
+        "assets/plugins/bootstrap-select/js/bootstrap-select.min.js",
+        "assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js",
+        "assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js",
+        "assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js",
+        "assets/plugins/autocomplete/jquery.mockjax.js",
+        "assets/plugins/autocomplete/jquery.autocomplete.min.js",
+        "assets/plugins/autocomplete/countries.js",
+        "assets/plugins/loadingmodal/js/jquery.loadingModal.js",
+        "assets/plugins/jquery.filer/js/jquery.filer.min.js",
+        "assets/plugins/flot-chart/jquery.flot.min.js",
+        "assets/plugins/flot-chart/jquery.flot.time.js",
+        "assets/plugins/flot-chart/jquery.flot.tooltip.min.js",
+        "assets/plugins/flot-chart/jquery.flot.resize.js",
+        "assets/plugins/flot-chart/jquery.flot.pie.js",
+        "assets/plugins/flot-chart/jquery.flot.selection.js",
+        "assets/plugins/flot-chart/jquery.flot.crosshair.js",
+        "assets/plugins/responsive-table/js/rwd-table.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {},
+    "build": {
+      "progress": true
+    }
+  }
+}

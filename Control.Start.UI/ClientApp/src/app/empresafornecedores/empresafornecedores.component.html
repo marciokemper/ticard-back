@@ -1,0 +1,76 @@
+<div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Empresa
+            </li>
+          </ol>
+        </div>
+        <h4 class="modal-title">VINCULAÇÃO DE ADQUIRENTES</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <div>
+
+          <div>
+
+            <form id="formUsuario" #form="ngForm" (ngSubmit)="$event.stopPropagation()" data-parsley-validate="">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="adquirentes" class="control-label">Adquirentes </label>
+                    <select name="adquirentes" id="adquirentes" size="5" class="form-control" multiple="multiple">
+                      <option *ngFor="let obj of adquirentes" value={{obj.id}}>
+                        {{obj.nome}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="form-group" style="text-align: center;margin-top: 25px;">
+                    <div id="btnRight" (click)="setbtnRight();" style="width:30px;margin-left: 45px;" class="btn-xs btn-custom"><i class="mdi mdi-chevron-right"></i></div>
+                    <div id="btnLeft" (click)="setbtnLeft();" style="margin-top:7px;width:30px;margin-left: 45px;" class="btn-xs btn-custom"><i class="mdi mdi-chevron-left"></i></div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="adquirentesSelecionados" class="control-label">Adquirentes Vinculados </label>
+                    <select name="adquirentesSelecionados" id="adquirentesSelecionados" size="5" class="form-control" multiple="multiple">
+                      <option *ngFor="let adq of adquirentesSelecionados" value={{adq.id}}>
+                        {{adq.nome}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <!--<div *ngIf="isAdm" class="col-md-7">
+                </div>-->
+
+              </div>
+              <!--<div class="modal-footer">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-custom waves-effect waves-light">{{buttonLabel}} <i class="mdi mdi-content-save"></i></button>
+                  <button type="button" class="btn btn-orange waves-effect waves-light" [routerLink]="['/usuario']">Voltar <i class="mdi mdi-exit-to-app"></i></button>
+                </div>
+              </div>-->
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

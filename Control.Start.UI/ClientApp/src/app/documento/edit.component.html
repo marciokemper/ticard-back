@@ -1,0 +1,140 @@
+<!--<div>-->
+  <!-- Page-Title -->
+  <!--<div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Nota Fiscal
+            </li>
+          </ol>
+        </div>
+        <h4 class="modal-title">MANUTENÇÃO DE NOTA FISCAL</h4>
+      </div>
+    </div>
+  </div>-->
+  <!-- end page title end breadcrumb -->
+  <!--<div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">-->
+        <!--<h4 class="m-t-0 header-title"><b>LISTA DE CLIENTES</b></h4>-->
+        <!--<div>
+
+          <div>
+
+            <form id="formCliente" #form="ngForm" (ngSubmit)="save(file);$event.stopPropagation()" data-parsley-validate="">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="tipopessoa" class="control-label"><font color="red">Tipo Pessoa</font></label>
+                    <select class="form-control" (change)="onChange($event.target.value)" [(ngModel)]="currentNF.clientePessoa" required name="tipopessoa" id="tipopessoa">
+                      <option value="1">Física</option>
+                      <option selected="selected" value="2">Jurídica</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nomecliente" class="control-label"><font color="red">{{lblnome}} do Cliente</font></label>
+                    <input name="nomecliente" autocomplete="off" type="text" [(ngModel)]="currentNF.clienteNome" parsley-trigger="change" required class="form-control" id="nomecliente" placeholder="Informe o nome">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="clientecnpj" class="control-label"><font color="red">{{lblcpfcnpj}}</font></label>
+                    <input type="text" name="clientecnpj" autocomplete="off" id="clientecnpj" [(ngModel)]="currentNF.clienteCpfCnpj" data-parsley-validcnpj="" model-view-value="true" parsley-trigger="change" required placeholder="" class="form-control">
+                    <span class="font-13 text-muted">{{lblformat}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label><font color="red">Vencimento</font></label>
+                    <div>
+                      <div class="input-group">
+                        <input type="text" #vencimento autocomplete="off" class="form-control" placeholder="dd/mm/aaaa" id="datevencimento" required>
+                        <span class="input-group-addon bg-custom b-0"><i class="mdi mdi-calendar text-white"></i></span>
+                      </div>--><!-- input-group -->
+                    <!--</div>
+                  </div>
+
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="valor" class="control-label"><font color="red">Valor</font></label>
+
+                    <input type="number" [(ngModel)]="currentNF.valor" step="0.01" autocomplete="off" class="form-control" style="text-align: right;" name="valor" id="valor" model-view-value="true" parsley-trigger="change" required placeholder="">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="orcamento" class="control-label"><font color="red">Código do Orçamento</font></label>
+                    <input type="text" name="orcamento" id="orcamento" autocomplete="off" [(ngModel)]="currentNF.numeroOrcamento" model-view-value="true" parsley-trigger="change" placeholder="" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="placa" class="control-label"><font color="red">Placa</font></label>
+                    <input type="text" name="placa" id="placa" autocomplete="off" [(ngModel)]="currentNF.placa" model-view-value="true" parsley-trigger="change" placeholder="" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="TipoDocumento" class="control-label"><font color="red">Tipo Documento</font></label>
+                    <select class="form-control" [(ngModel)]="currentNF.tipoDocumento" required name="TipoDocumento" id="TipoDocumento">
+                      <option value="1">Peças</option>
+                      <option selected="selected" value="2">Serviços</option>
+                      <option value="3">Nota de débito</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="pedidocompra" class="control-label">Pedido de Compra</label>
+                    <input type="text" name="pedidocompra" id="placa" autocomplete="off" [(ngModel)]="currentNF.pedidoCompra" model-view-value="true" parsley-trigger="change" placeholder="" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="filer_input2" class="control-label"><font color="red">Documento </font> </label>-->
+                    <!-- <input *ngIf="isAdm" #file type="file" data-buttontext="Selecione Arquivo" class="filestyle" id="filer_input2" name="docto" data-buttonname="btn-primary"> -->
+                    <!--<input #file type="file" data-buttontext="Selecione Arquivo" class="filestyle" id="filer_input2" name="docto" data-buttonname="btn-primary" [required]="!isAdm ? 'required' : null">
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="isAdm!=true" class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="observacao" class="control-label">Observação</label>
+                    <textarea name="observacao" class="form-control" autocomplete="off" [(ngModel)]="currentNF.obsFornecedor" rows="5" parsley-trigger="change" id="observacao"></textarea>
+                  </div>
+                </div>              
+         
+              </div>
+
+              <div class="modal-footer">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-custom waves-effect waves-light">Salvar <i class="mdi mdi-content-save"></i></button>
+                  <button type="button" class="btn btn-orange waves-effect waves-light" [routerLink]="['/notafiscal']">Voltar <i class="mdi mdi-exit-to-app"></i></button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>-->
+
+
+

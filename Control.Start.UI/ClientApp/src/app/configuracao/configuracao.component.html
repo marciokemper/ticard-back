@@ -1,0 +1,64 @@
+<div>
+  <!-- Page-Title -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Configuração
+            </li>
+          </ol>
+        </div>
+        <h4 class="modal-title">MANUTENÇÃO DE CONFIGURAÇÃO</h4>
+      </div>
+    </div>
+  </div>
+  <!-- end page title end breadcrumb -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <!--<h4 class="m-t-0 header-title"><b>LISTA DE CLIENTES</b></h4>-->
+        <div>
+
+          <div>
+            <form id="formConfiguracao" #form="ngForm" (ngSubmit)="save()" data-parsley-validate="">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Diretórios</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-10">
+                          <div class="form-group">
+                            <label for="hostemail" class="control-label">Local Skyline</label>
+                            <input type="text" [(ngModel)]="currentConfiguracao.caminhoNexxera" class="form-control" name="hostemail" id="hostemail" model-view-value="true" parsley-trigger="change" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             <br/>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar <i class="mdi mdi-content-save"></i></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+

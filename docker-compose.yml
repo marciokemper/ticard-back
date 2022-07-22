@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  boschfacilitesui:
+    image: boschfacilitesui
+    build:
+      dockerfile: ./Control.Facilites.UI/Dockerfile
+      context: .
+    container_name: boschfacilitesui
+    restart: on-failure
+    hostname: boschfacilitesui
+    ports:
+      - 8027:80
+      - 44301:443
+    volumes:
+      - /controlstorage/controlfacilites/imagens:/wwwroot/imagens
+
+  boschfacilitesapis:
+    image: boschfacilitesapis
+    build: 
+      context: .
+      dockerfile: ./Control.Facilites/Dockerfile
+    container_name: boschfacilitesapis
+    restart: on-failure
+    command: dotnet Control.Facilites.dll
+    hostname: boschfacilitesapis
+    ports:
+      - 5027:5027
+    volumes:
+      - /facilities-storage/bosch:/controlstorage/bosch
+    #volumes:
+    #  - /controlstorage/faturas:/controlstorage/faturas
+    environment:
+      - ASPNETCORE_ENVIRONMENT=prod

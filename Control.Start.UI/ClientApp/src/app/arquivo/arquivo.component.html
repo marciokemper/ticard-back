@@ -1,0 +1,40 @@
+<div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <div>
+
+          <div>
+            <form name="formUploadManual" id="formUploadManual" #form="ngForm" (ngSubmit)="insertManual(file.files);$event.stopPropagation()" data-parsley-validate="">
+              <div class="row">
+                <div class="p-20">
+                  <div class="form-group">
+                    <label for="filer_inputb" class="control-label">Documento </label>
+                    <input #file type="file" data-buttontext="Selecione Arquivo" class="filestyle" id="filer_inputb" name="docto" data-buttonname="btn-primary">
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="p-20">
+                  <p><b>OBSERVAÇÕES</b></p>
+                  <p>- Os arquivos deverão ser do tipo CSV com separador ';'.<br />       Modelo: Nome Fantasia;Razao Social;Cnpj;Nome da Matriz;Classificacao/Centro de Custo;Cep;Estado;Cidade;Endereço<br /> - Somente uma empresa Matriz pode existir.</p>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-custom waves-effect waves-light">Salvar <i class="mdi mdi-content-save"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

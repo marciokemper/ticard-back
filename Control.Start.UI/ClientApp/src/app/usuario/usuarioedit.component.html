@@ -1,0 +1,103 @@
+<div *ngIf="service.isAuthenticated()">
+  <!-- Page-Title -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Cliente
+            </li>
+          </ol>
+        </div>
+        <h4 [class.hidden]="inEditMode" class="modal-title">INCLUSÃO DE USUÁRIO</h4>
+        <h4 [class.hidden]="!inEditMode" class="modal-title">EDIÇÃO DE USUÁRIO</h4>
+      </div>
+    </div>
+  </div>
+  <!-- end page title end breadcrumb -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <div>
+
+          <div>
+
+            <form id="formUsuario" #form="ngForm" (ngSubmit)="save();$event.stopPropagation()" data-parsley-validate="">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="nome" class="control-label"><font color="red">Nome</font></label>
+                    <input name="nome" type="text" [(ngModel)]="currentUsuario.nome" parsley-trigger="change" required class="form-control" id="nome" placeholder="Nome completo do Usuário">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="login" class="control-label"><font color="red">Apelido</font></label>
+                    <input name="login" type="text" [(ngModel)]="currentUsuario.login" parsley-trigger="change" required class="form-control" id="email" placeholder="Informe o Apelido">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="email" class="control-label"><font color="red">E-mail</font></label>
+                    <input name="email" type="text" [(ngModel)]="currentUsuario.email" parsley-trigger="change" required class="form-control" id="email" placeholder="Informe um e-mail">
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="senha" class="control-label"><font color="red">Senha</font></label>
+                    <input name="senha" type="password" [(ngModel)]="currentUsuario.senha" parsley-trigger="change" required class="form-control" id="senha" placeholder="Informe uma senha">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="confirmsenha" class="control-label"><font color="red">Confirma Senha</font></label>
+                    <input name="confirmsenha" type="password" [(ngModel)]="currentUsuario.confirmaSenha" data-parsley-equalto="#senha" required class="form-control" id="confirmsenha" placeholder="informar senha novamente">
+                  </div>
+                </div>
+                <div *ngIf="isAdm" class="col-md-4">
+                  <div class="form-group">
+                    <label for="cliente" class="control-label">Fornecedor </label>
+                    <select class="form-control" [(ngModel)]="fornecedorSelected" parsley-trigger="change" name="cliente" id="cliente">
+                      <option value="">SELECIONE...</option>
+                      <option *ngFor="let fornecedor of fornecedores" value={{fornecedor.id}}>
+                        {{fornecedor.nome}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div *ngIf="isAdmGeral" class="col-md-4">
+                  <div class="form-group">
+                    <label for="empresa" class="control-label">Empresa </label>
+                    <select class="form-control" [(ngModel)]="empresaSelected" parsley-trigger="change" name="empresa" id="empresa">
+                      <option value="">SELECIONE...</option>
+                      <option *ngFor="let empresa of empresas" value={{empresa.id}}>
+                        {{empresa.nome}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>              
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-custom waves-effect waves-light">{{buttonLabel}} <i class="mdi mdi-content-save"></i></button>
+                    <button type="button" class="btn btn-orange waves-effect waves-light" [routerLink]="['/usuario']">Voltar <i class="mdi mdi-exit-to-app"></i></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

@@ -1,0 +1,77 @@
+<div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-title-box">
+        <div class="btn-group pull-right">
+          <ol class="breadcrumb hide-phone p-0 m-0">
+            <li>
+              <a [routerLink]="['/dashboard']">Principal</a>
+            </li>
+            <li class="active">
+              Adiquirente
+            </li>
+          </ol>
+        </div>
+        <h4 [class.hidden]="inEditMode" class="modal-title">INCLUSÃO DE ADQUIRENTE</h4>
+        <h4 [class.hidden]="!inEditMode" class="modal-title">EDIÇÃO DE ADQUIRENTE</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box table-responsive">
+        <div>
+
+          <div>
+            <form id="formFornecedor" #form="ngForm" (ngSubmit)="save()" data-parsley-validate="">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="codigo" class="control-label"><font color="red">Código</font></label>
+                    <input autocomplete="off" name="codigo" type="text" [(ngModel)]="currentFornecedor.codigo" parsley-trigger="change" required class="form-control" id="codigo" placeholder="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nome" class="control-label"><font color="red">Nome</font></label>
+                    <input autocomplete="off" name="nome" type="text" [(ngModel)]="currentFornecedor.nome" parsley-trigger="change" required class="form-control" id="nome" placeholder="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="cnpj" class="control-label"><font color="red">Cnpj</font></label>
+                    <input type="text" name="cnpj" [(ngModel)]="currentFornecedor.cnpj" data-parsley-validcnpj="" mask="00.000.000/0000-00" model-view-value="true" parsley-trigger="change" required placeholder="" class="form-control">
+                    <span class="font-13 text-muted">99.999.999/9999-99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="pontoVenda" class="control-label">Ponto de Venda</label>
+                    <input type="text" name="pontoVenda" id="pontoVenda" [(ngModel)]="currentFornecedor.pontoVenda" model-view-value="true" parsley-trigger="change" placeholder="" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="modal-footer">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-custom waves-effect waves-light">{{buttonLabel}} <i class="mdi mdi-content-save"></i></button>
+                  <button type="button" class="btn btn-orange waves-effect waves-light" [routerLink]="['/fornecedor']">Voltar <i class="mdi mdi-exit-to-app"></i></button>
+
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

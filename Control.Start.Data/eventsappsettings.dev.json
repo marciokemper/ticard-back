@@ -1,0 +1,58 @@
+{
+
+  "RabbitMQConfig": {
+
+    "Hostname": "54.232.9.230",
+
+    "Username": "rabbitmquser",
+
+    "Password": "rabbitmqpass",
+
+    "Port": 5672,
+
+    "Vhost": "/",
+
+    "InvoicesRequestsQueue": "invoicesrequests",
+
+    "InvoicesResponsesQueue": "invoicesresponses",
+
+    "ParsingRequestsQueue": "parsingrequests",
+
+    "GenesysParserRequestsQueue": "genesysparserrequests",
+
+    "ParsingResponsesQueue": "parsingresponses",
+
+    "InvoicesRPCQueue": "rpc_invoices"
+  },
+   "ContasConfig": {
+
+    "ControlStorageFolder": "/controlstorage/bosch/",
+
+    "StorageToUse": 2,
+
+    "LocalServerAddress": "https://162.241.41.48",
+
+    "ContasAPIAddress": "https://localhost:499/api",
+
+    "ContasAPIUser": "coletor@controlnex.com.br",
+
+    "ContasAPIPass": "1ro#te#loc",
+
+    "CorreioAPIAddress": "https://correio-certo.cloudint.nexxera.com",
+
+    "SendToCorreio": true,
+
+    "ParallelRobotsPerRequest": 3,
+
+    "S3Url": "https://ceph-int.nexxera.com",
+
+    "S3Key": "NLU95ZID11HHL551AIS0",
+
+    "S3Secret": "Sy8GGu5m49MH4qc31mOabgqjSQQ8BV4e9KZGtpbe",
+
+    "S3Bucket": "control-contas-dev",
+
+    "Headless": false
+  }
+
+}
